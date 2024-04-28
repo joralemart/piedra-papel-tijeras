@@ -1,4 +1,4 @@
-import { appStateSP, appStateMP } from "./state.ts";
+import { appStateSP } from "./state.ts";
 
 export function updateScore() {
   //CHECKSCORE

@@ -85,7 +85,7 @@ function goTo(path: string) {
 function homePageHandler() {
   //GET BUTTONS
   const singlePlayerButton = document.getElementById("home-play-single-player-button");
-  const multiPlayerButton = document.getElementById("home-play-multi-player-button");
+  //const multiPlayerButton = document.getElementById("home-play-multi-player-button");
 
   //BUTTONS EVENTS
   singlePlayerButton?.addEventListener("click", () => goTo("/single-player"));
