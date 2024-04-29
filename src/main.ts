@@ -34,7 +34,7 @@ function handleRoute(route: string) {
       <div class="player-up-choice"></div>
       </div>
       <div class="screen-message">
-      <h1 class="screen-message-text">¡Comienza el juego!</h1>
+      <h1 class="screen-message-text"></h1>
       </div>
       <div class="player-down">
         <div id="options">

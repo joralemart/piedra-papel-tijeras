@@ -1,4 +1,5 @@
 import { appStateSP } from "./state.ts";
+import { startTimer } from "./timer-start-game.ts";
 
 export function updateScore() {
   //CHECKSCORE
@@ -23,13 +24,16 @@ export function updateScore() {
     `;
   }
 
+  console.log(appStateSP.data.scores.player1Score, appStateSP.data.scores.player2Score);
+
   //SAVE SCORE IN LOCAL STORAGE
   localStorage.setItem("player1Score", appStateSP.data.scores.player1Score.toString());
   localStorage.setItem("computerScore", appStateSP.data.scores.player2Score.toString());
 
   //RELOAD GAME
   setTimeout(() => {
-    location.reload();
+    //RESTART GAME
+    startTimer();
   }, 2000);
 }
 
@@ -61,6 +65,7 @@ function handleComputerTurn() {
     computerChoice.style.backgroundSize = "cover";
     computerChoice.style.backgroundImage = "url('./src/images/loading.png')";
     computerChoice.style.padding = "10px";
+    computerChoice.style.visibility = "visible";
 
     //SHOW CHOICE
     setTimeout(() => {
@@ -73,6 +78,7 @@ function handleComputerTurn() {
       const screenMessage = document.querySelector(".screen-message-text");
       if (screenMessage) {
         screenMessage.textContent = appStateSP.data.screenMessage;
+        console.log(screenMessage.textContent);
       }
     }, 2000);
   }
@@ -146,17 +152,19 @@ export function instantiateCards() {
             case "option1":
               op.style.boxShadow = "0px 0px 20px #9ff";
               appStateSP.makeMove("piedra", "player1");
+              endTurn();
               break;
             case "option2":
               op.style.boxShadow = "0px 0px 20px #9ff";
               appStateSP.makeMove("papel", "player1");
+              endTurn();
               break;
             case "option3":
               op.style.boxShadow = "0px 0px 20px #9ff";
               appStateSP.makeMove("tijeras", "player1");
+              endTurn();
               break;
           }
-          endTurn();
         });
       }
     }

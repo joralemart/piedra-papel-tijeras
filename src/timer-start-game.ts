@@ -2,6 +2,9 @@ import * as gameManager from "./game-manager.ts";
 import { appStateSP } from "./state.ts";
 
 export function startGame() {
+  //SCREEN MESSAGE ELEMENT
+  let screenMessage = document.querySelector(".screen-message-text") as HTMLElement;
+  screenMessage.textContent = "";
   //MARKER
   const marker = document.querySelector(".marker") as HTMLElement;
   //CLEAR MARKER FOR UPDATING
@@ -22,40 +25,18 @@ export function startGame() {
   //gameManager.updateScore();
 }
 
-function timerTicks(n: number, timer: HTMLElement) {
-  let tick = setInterval(() => {
-    console.log("RUNNING TIMER");
-    //CLEAR TEXT CONTENT IF TIMER IS -1
-    if (timer.textContent == "1") {
-      timer.style.visibility = "hidden";
-      //START GAME
-      startGame(); //CALL startGame()
-    }
-    //CHECK START TITLE AND SET VALUE TO INITIAL NUMBER
-    if (timer.textContent == "¡Comienza el juego!") {
-      timer.textContent = n.toString();
-    }
-    //DECREASE BY 1 IF NOT TITLE
-    else if (timer.textContent != "¡Comienza el juego!") {
-      let numberType = Number(timer.textContent);
-      numberType -= 1;
-      timer.textContent = numberType.toString();
-    }
-    //STOP TIMER
-    if (timer.textContent == "0") {
-      clearInterval(tick);
-    }
-  }, 1000);
-}
-
 export function startTimer() {
   //SCREEN MESSAGE ELEMENT
-  let timer = document.querySelector(".screen-message-text") as HTMLElement;
+  let screenMessage = document.querySelector(".screen-message-text") as HTMLElement;
+  screenMessage.textContent = "¡Comienza la partida!";
 
-  if (timer) {
+  if (screenMessage) {
+    //HIDE CARDS FOR A BRIEF TIME
+    const computerChoice = document.querySelector(".player-up-choice") as HTMLElement;
+    computerChoice.style.visibility = "hidden";
     //SHOW TITLE FOR 1 SECOND, AND START TIMER
     setTimeout(() => {
-      timerTicks(3, timer); //CALL startTimer()
-    }, 500);
+      startGame(); //CALL STARTGAME
+    }, 2000);
   }
 }
