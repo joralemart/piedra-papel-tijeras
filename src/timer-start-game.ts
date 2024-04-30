@@ -37,6 +37,6 @@ export function startTimer() {
     //SHOW TITLE FOR 1 SECOND, AND START TIMER
     setTimeout(() => {
       startGame(); //CALL STARTGAME
-    }, 2000);
+    }, 1500);
   }
 }

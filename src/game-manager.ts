@@ -93,7 +93,7 @@ function endTurn() {
   const options = document.getElementById("options");
   if (options) {
     options.style.pointerEvents = "none";
-    options.style.opacity = "80%";
+    options.style.opacity = "60%";
     message.style.visibility = "visible";
     message.textContent = "Computadora jugando...";
     handleComputerTurn();
@@ -106,6 +106,7 @@ export function instantiateCards() {
 
   //ENABLE OPTIONS
   const userOptions = document.getElementById("options");
+  userOptions!.style.opacity = "100%";
   if (userOptions) {
     userOptions.style.pointerEvents = "auto";
   }
@@ -146,8 +147,11 @@ export function instantiateCards() {
       op.style.boxShadow = "0px 0px 20px #000";
 
       //HANDLE CHOICE
-      if (op != null && appStateSP.data.userTurn) {
+      if (!appStateSP.data.eventsAdded) {
         op.addEventListener("click", () => {
+          console.log("EVENTS ADDED");
+          appStateSP.data.eventsAdded = true;
+
           switch (op.id) {
             case "option1":
               op.style.boxShadow = "0px 0px 20px #9ff";

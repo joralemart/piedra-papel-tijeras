@@ -5,7 +5,7 @@ const computerStorageScore =
   localStorage.getItem("computerScore") != null ? Number(localStorage.getItem("computerScore")) : 0;
 export const appStateSP = {
   data: {
-    roundHasFinished: false,
+    eventsAdded: false,
     isSinglePlayer: null,
     screenMessage: "",
     players: { player1Name: "Jugador", player2Name: "Computer" },
